@@ -1,0 +1,4 @@
+makefolder("How Folder Will Call")
+writefile("Your Called Folder\\FILENAME.txt", "TEXT IN FILE")
+local x = readfile("YourCalledFolder\\READ ME.txt")
+print(x) -- Prints what name of file has been created
