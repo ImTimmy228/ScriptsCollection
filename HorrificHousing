@@ -389,32 +389,3 @@ local killBunnyBoss = miscCategory:NewToggle("Kill Bunny Boss", "Kills Bunny Bos
         wait()      
     end
 end) 
-
-local ON = false 
-
-local drop100 = manorCategory:NewButton("Drop100 Mines", "", function()
-    for i = 0,100 do
-        workspace.Plates.Reward.remote:FireServer(2)
-    end
-    for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then 
-            v.Parent = game.Players.LocalPlayer.Character
-            v:Activate()
-        end 
-    end  
-end)
-
-local immortality = manorCategory:NewButton("Immortal","Nothing", function()
-   workspace.Plates.Reward.remote:FireServer(1) 
-end)
-
-local autoWin = manorCategory:NewButton("Autowin","Nothing", function()
-    for i = 0,10000000 do 
-        workspace.Plates.Reward.remote:FireServer(3) 
-        wait(0.00000000000000000000000000000000000000000001)
-    end
-end)
-
-local stealHealth = manorCategory:NewButton("StealHealth","Nothing", function()
-    workspace.Plates.Reward.remote:FireServer(3)
-end)
