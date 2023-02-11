@@ -3,6 +3,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCol
 wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/Payloadforbonzi",true))()
 
+
+wait()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/opchatLog",true))()
+
+-- loadstring(game:HttpGet("",true))()
 wait(1)
 
 if IY_LOADED and not _G.IY_DEBUG == true then
