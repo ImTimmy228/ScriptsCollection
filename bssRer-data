@@ -1,0 +1,7 @@
+local args = {
+   [1] = "Black Bear",
+   [2] = "f\255",
+   [3] = "Finish"
+}
+
+game:GetService("ReplicatedStorage").Events.UpdatePlayerNPCState:FireServer(unpack(args))
